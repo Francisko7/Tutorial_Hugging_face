@@ -21,3 +21,10 @@ En este repositorio encontrarás una colección de 10 tutoriales diseñados para
     Fácil de Seguir: Cada tutorial está diseñado para ser accesible, incluso si eres nuevo en el mundo del NLP.
     Ejemplos Prácticos: Incluye numerosos ejemplos de código que puedes utilizar y adaptar a tus necesidades.
     Aplicaciones Reales: Aprende a aplicar las herramientas de Hugging Face en proyectos reales y útiles.
+Cómo Empezar
+
+    Clona este repositorio:
+
+    git clone https://github.com/tu-usuario/Tutorial_hugging_face.git
+
+    Sigue los tutoriales en orden para obtener una comprensión completa de Hugging Face
