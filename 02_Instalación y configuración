@@ -1,1 +1,69 @@
+## Este tutorial es una continuación de introducción ##
+
+1. Instalación de las librerías principales
+
+Para comenzar, instala las librerías esenciales de Hugging Face con:
+
+pip install transformers datasets
+
+    transformers: Contiene los modelos preentrenados y las herramientas para fine-tuning.
+    datasets: Facilita el acceso a datasets listos para usar con modelos de ML/NLP.
+
+Si planeas usar modelos de texto en GPU, también instala PyTorch o TensorFlow:
+
+pip install torch torchvision torchaudio  # PyTorch  
+pip install tensorflow                   # TensorFlow (opcional)
+
+Para acelerar el procesamiento con GPU (NVIDIA), instala CUDA siguiendo la documentación de PyTorch o TensorFlow.
+2. Verificación de Instalación
+
+Abre Python y ejecuta:
+
+from transformers import pipeline
+
+pipe = pipeline("text-generation", model="gpt2")
+print(pipe("Hola, soy una IA", max_length=20))
+
+Si el código genera un texto sin errores, la instalación fue exitosa.
+3. Configuración de Entorno
+
+Si usas Google Colab, activa la GPU en:
+Entorno de ejecución → Cambiar tipo de entorno de ejecución → Acelerador de hardware: GPU
+
+Para Jupyter Notebook, instala Jupyter si aún no lo tienes:
+
+pip install jupyter
+
+Y ejecútalo con:
+
+jupyter notebook
+
+4. Clonación de Modelos desde Hugging Face
+
+Para acceder a modelos de Hugging Face sin descargarlos manualmente:
+
+from transformers import AutoModelForSequenceClassification, AutoTokenizer
+
+modelo = AutoModelForSequenceClassification.from_pretrained("distilbert-base-uncased")
+tokenizer = AutoTokenizer.from_pretrained("distilbert-base-uncased")
+
+5. Autenticación con Hugging Face
+
+Si deseas cargar y subir modelos a tu cuenta de Hugging Face, instala huggingface_hub:
+
+pip install huggingface_hub
+
+Luego, inicia sesión:
+
+from huggingface_hub import notebook_login
+notebook_login()
+
+Esto abrirá una ventana para ingresar tu token de acceso, el cual puedes obtener en Hugging Face Tokens.
+Resumen
+
+✅ Instalaste transformers y datasets
+✅ Verificaste que la instalación funciona
+✅ Configuraste el entorno en Colab o Jupyter
+✅ Descargaste modelos preentrenados
+✅ Autenticación con Hugging Face
 
