@@ -1,0 +1,76 @@
+Tutorial 3: Uso de Modelos Preentrenados
+1. Introducción
+
+En este tutorial, aprenderás cómo utilizar modelos preentrenados de Hugging Face para realizar tareas comunes de procesamiento de lenguaje natural (NLP), 
+como el análisis de sentimientos y la clasificación de texto. 
+Los modelos preentrenados te permiten aprovechar el poder de modelos avanzados sin necesidad de entrenarlos desde cero.
+
+2. Cargar un Modelo Preentrenado
+
+Hugging Face proporciona una amplia gama de modelos preentrenados que puedes cargar fácilmente.
+Vamos a usar el modelo distilbert-base-uncased-finetuned-sst-2-english para análisis de sentimientos.
+
+    Código para Cargar el Modelo:
+
+    ´´´from transformers import AutoModelForSequenceClassification, AutoTokenizer
+
+    # Nombre del modelo
+    model_name = "distilbert-base-uncased-finetuned-sst-2-english"
+
+    # Cargar el modelo y el tokenizador
+    model = AutoModelForSequenceClassification.from_pretrained(model_name)
+    tokenizer = AutoTokenizer.from_pretrained(model_name)´´´
+
+3. Realizar una Predicción
+
+Una vez que hayas cargado el modelo y el tokenizador, puedes realizar predicciones sobre texto de entrada.
+
+    Código para Realizar una Predicción:
+
+   ´´´ # Texto de ejemplo
+    text = "I love using Hugging Face's transformers library!"
+
+    # Tokenizar el texto
+    inputs = tokenizer(text, return_tensors="pt")
+
+    # Obtener la predicción
+    outputs = model(**inputs)
+    logits = outputs.logits
+
+    # Interpretar los resultados
+    predicted_class = logits.argmax().item()
+    labels = ["NEGATIVE", "POSITIVE"]
+    print(f"Predicted class: {labels[predicted_class]}")```
+
+4. Uso de Pipelines para Simplificar Tareas
+
+Hugging Face proporciona una API de alto nivel llamada pipeline que simplifica el uso de modelos preentrenados para tareas comunes.
+
+    Código para Usar Pipelines:
+
+    ´´´from transformers import pipeline
+
+    # Crear un pipeline de análisis de sentimientos
+    sentiment_pipeline = pipeline("sentiment-analysis")
+
+    # Realizar una predicción
+    result = sentiment_pipeline("I love using Hugging Face's transformers library!")
+    print(result)´´´
+
+5. Ejemplos Prácticos
+
+    Análisis de Sentimientos:
+
+    ´´´result = sentiment_pipeline("This is the best day of my life!")
+    print(result)´´´
+
+    Clasificación de Texto:
+
+    ´´´text_classification_pipeline = pipeline("text-classification", model=model, tokenizer=tokenizer)
+    result = text_classification_pipeline("Hugging Face makes NLP easy!")
+    print(result)´´´
+
+6. Conclusión
+
+En este tutorial, has aprendido cómo cargar y usar modelos preentrenados de Hugging Face para realizar tareas de NLP. 
+Los modelos preentrenados te permiten aprovechar el poder de modelos avanzados sin necesidad de entrenarlos desde cero.
